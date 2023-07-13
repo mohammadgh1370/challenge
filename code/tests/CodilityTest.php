@@ -13,9 +13,9 @@ final class CodilityTest extends TestCase
     **/
     public function testBinaryGap($N, $expected)
     {
-        $result = Codility::BinaryGap($N);
+        $result = digits_sequence($N);
         echo PHP_EOL;
-        echo 'Initial binary: '.$N;
+        echo "{$N}-th: ";
         echo PHP_EOL;
         echo 'Result Expected: '.$expected;
         echo PHP_EOL;
@@ -26,14 +26,19 @@ final class CodilityTest extends TestCase
             $result
         );
     }
-    public function binaryGapProvider() {
+    public static function binaryGapProvider() {
         return [
-            ['100', 0],
-            ['10001', 3],
-            ['1001000101', 3],
-            ['1010100100101', 2],
-            ['100000000100000100000000001000000000000000010010', 16],
-            ['00100', 0]
+            [0, 0],
+            [1, 1],
+            [2, 1],
+            [3, 2],
+            [4, 3],
+            [5, 5],
+            [6, 8],
+            [7, 13],
+            [8, 12],
+            [9, 7],
+            [10, 10],
         ];
     }
 

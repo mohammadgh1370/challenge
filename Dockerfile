@@ -1,20 +1,15 @@
-FROM php:7.0-apache
+FROM php:8.2-apache
 MAINTAINER Abel Moreno <abel.moreno.acevedo@gmail.com>
 
-RUN apt-get update -yqq \
-    && apt-get install git zlib1g-dev libsqlite3-dev -y \
-    && docker-php-ext-install zip \
-    && docker-php-ext-install pdo_mysql \
-    && docker-php-ext-install pdo_sqlite
+RUN apt-get update -y \
+    && apt-get install git libzip-dev zip -y \
+    && docker-php-ext-install zip
+
+RUN echo 'max_execution_time = 120' >> /usr/local/etc/php/conf.d/docker-php-maxexectime.ini;
 
 RUN curl -fsSL https://getcomposer.org/installer | php \
     && mv composer.phar /usr/local/bin/composer \
-    && composer global require phpunit/phpunit ^5.7 --no-progress --no-scripts --no-interaction
-
-RUN pecl install xdebug \
-    && echo 'zend_extension=/usr/local/lib/php/extensions/no-debug-non-zts-20151012/xdebug.so' > \
-        /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
-    && php -m | grep xdebug
+    && composer global require phpunit/phpunit ^10.2 --no-progress --no-scripts --no-interaction
 
 ENV PATH /root/.composer/vendor/bin:$PATH
 

@@ -5,6 +5,6 @@ services:
     image: backend:php
     container_name: php-test
     volumes:
-      - ../test/code:/var/www/html/
+      - ./code:/var/www/html/
     ports:
       - "90:80"
