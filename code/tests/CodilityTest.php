@@ -8,16 +8,13 @@ final class CodilityTest extends TestCase
 {
 
     /**
-    * 001. BinaryGap
-    * @dataProvider binaryGapProvider
+    * @dataProvider sequenceDigitsProvider
     **/
-    public function testBinaryGap($N, $expected)
+    public function testSequenceDigits($n, $expected)
     {
-        $result = digits_sequence($N);
+        $result = digits_sequence($n);
         echo PHP_EOL;
-        echo "{$N}-th: ";
-        echo PHP_EOL;
-        echo 'Result Expected: '.$expected;
+        echo "Result Expected of $n-th: ".$expected;
         echo PHP_EOL;
         echo 'Result: '.$result;
         echo PHP_EOL;
@@ -26,7 +23,8 @@ final class CodilityTest extends TestCase
             $result
         );
     }
-    public static function binaryGapProvider() {
+
+    public static function sequenceDigitsProvider() {
         return [
             [0, 0],
             [1, 1],
@@ -39,9 +37,7 @@ final class CodilityTest extends TestCase
             [8, 12],
             [9, 7],
             [10, 10],
+            [11, 8],
         ];
     }
-
-
-
 }

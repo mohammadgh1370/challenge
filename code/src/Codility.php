@@ -1,8 +1,8 @@
 <?php
 
-
-function digits_sequence($n) {
-
+// given an integer `n`, returns the `n`-th element of the sequence
+function digits_sequence(int $n): int
+{
     if ($n < 1) {
         return 0;
     }
@@ -24,9 +24,10 @@ function digits_sequence($n) {
     return $result;
 }
 
-function sum_of_digits($n, &$cache)
+// sum digits of number
+function sum_of_digits(int $n, array &$cache): int
 {
-    if(isset($cache[$n])){
+    if (isset($cache[$n])) {
         return $cache[$n];
     }
     $num = $n;
